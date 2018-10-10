@@ -260,11 +260,11 @@ BZIP2_VERSION=1.0.6-p2 $SOURCE_DIR/source/bzip2/build.sh
 ################################################################################
 # Build GDB
 ################################################################################
-if [[ ! "$RELEASE_NAME" =~ CentOS.*5\.[[:digit:]] ]]; then
-  GDB_VERSION=7.9.1 $SOURCE_DIR/source/gdb/build.sh
-else
+#if [[  ! "$RELEASE_NAME" =~ CentOS.*5\.[[:digit:]] ]]; then
+#  GDB_VERSION=7.9.1 $SOURCE_DIR/source/gdb/build.sh
+#else
   GDB_VERSION=7.9.1 build_fake_package "gdb"
-fi
+#fi
 
 ################################################################################
 # Build Libunwind
@@ -289,7 +289,7 @@ FLATBUFFERS_VERSION=1.6.0 $SOURCE_DIR/source/flatbuffers/build.sh
 ################################################################################
 (
   export BOOST_VERSION=1.57.0-p3
-  export KUDU_VERSION=a954418
+  export KUDU_VERSION=${KUDU_VERSION:-6eb17c2}
   if $SOURCE_DIR/source/kudu/build.sh is_supported_platform; then
     $SOURCE_DIR/source/kudu/build.sh build
   else
