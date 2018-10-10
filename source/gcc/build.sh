@@ -80,6 +80,9 @@ if [ ! -f $SOURCE_DIR/check/$PACKAGE_STRING ]; then
     popd
   fi
 
+  for PATCH in `find ../gcc-4.9.2-patches -type f`; do
+	patch -p1 < $PATCH
+  done
   cd ..
   mkdir -p build-${GCC_VERSION}
   cd build-${GCC_VERSION}
